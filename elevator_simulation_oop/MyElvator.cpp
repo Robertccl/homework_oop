@@ -12,6 +12,31 @@ MyElvator::~MyElvator()
 }
 
 
+void MyElvator::setMaxCarryMen(int carryCapacity)
+{
+	this->maxCarryMen = carryCapacity;
+}
+
+
+//电梯仿真初始化
+void MyElvator::simulationInit()
+{
+	for (int i = 0; i < 10; i++)
+	{
+		//this->maxCarryMen = defaultCarryNum;
+		this->linkageFlag[i] = false;
+		this->elevatorCarryMen[i] = 0;
+
+	}
+
+}
+//电梯仿真开始
+void MyElvator::simulationStart()
+{
+
+}
+
+
 //电梯运行规则
 bool MyElvator::canArrive(int elevatorNum, int floorNum)
 {
