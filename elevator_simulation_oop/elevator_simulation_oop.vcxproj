@@ -147,11 +147,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ElvatorSimulation.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyElvator.cpp" />
     <ClCompile Include="MyUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ElvatorSimulation.h" />
     <ClInclude Include="MyElvator.h" />
     <ClInclude Include="MyUtil.h" />
   </ItemGroup>

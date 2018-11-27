@@ -17,23 +17,46 @@ void MyElvator::setMaxCarryMen(int carryCapacity)
 	this->maxCarryMen = carryCapacity;
 }
 
-
-//电梯仿真初始化
-void MyElvator::simulationInit()
+//判断去某个楼层可以乘坐的电梯编号   elevatorFlag为10个bool类型，初始值为false
+void MyElvator::canTakeFloor(int floorNum, bool *elevatorFlag)
 {
 	for (int i = 0; i < 10; i++)
+		elevatorFlag[i] = false;
+	if (floorNum > 0 && floorNum <= 40)
 	{
-		//this->maxCarryMen = defaultCarryNum;
-		this->linkageFlag[i] = false;
-		this->elevatorCarryMen[i] = 0;
-
+		elevatorFlag[0] = true;
+		elevatorFlag[1] = true;
+		if (floorNum == 1)
+		{
+			elevatorFlag[2] = true;
+			elevatorFlag[3] = true;
+			elevatorFlag[4] = true;
+			elevatorFlag[5] = true;
+			elevatorFlag[8] = true;
+			elevatorFlag[9] = true;
+		}
+		if (floorNum >= 25 && floorNum <= 40)
+		{
+			elevatorFlag[2] = true;
+			elevatorFlag[3] = true;
+		}
+		if (floorNum > 1 && floorNum <= 25)
+		{
+			elevatorFlag[4] = true;
+			elevatorFlag[5] = true;
+		}
+		if (floorNum % 2 == 0)
+		{
+			elevatorFlag[6] = true;
+			elevatorFlag[7] = true;
+		}
+		if (floorNum % 2 == 1)
+		{
+			elevatorFlag[8] = true;
+			elevatorFlag[9] = true;
+		}
 	}
-
-}
-//电梯仿真开始
-void MyElvator::simulationStart()
-{
-
+	
 }
 
 

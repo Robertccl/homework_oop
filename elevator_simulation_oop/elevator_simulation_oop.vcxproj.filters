@@ -24,12 +24,18 @@
     <ClCompile Include="MyElvator.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ElvatorSimulation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyUtil.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="MyElvator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ElvatorSimulation.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
