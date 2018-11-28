@@ -36,7 +36,7 @@ public:
 public:
 	const int defaultCarryNum = 16;
 
-	MyUtil myUtil;
+	MyUtil* myUtil = MyUtil::getInstance();
 
 public:
 	elevator elevators[10];     //10Ì¨µçÌÝ

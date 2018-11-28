@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream>
 #include <fstream>
 #include <ctime>
@@ -13,10 +14,21 @@ using namespace std;
 class MyUtil
 {
 public:
-	MyUtil();
+	
 	~MyUtil();
+	static MyUtil *myUtil;
+public:
+	static MyUtil* getInstance()
+	{
+		if (myUtil == NULL)
+			myUtil = new MyUtil();
+		return myUtil;
+	}
 
 public:
 	int random(int min, int max);  //生成指定范围的随机数
+
+private:
+	MyUtil();
 };
 

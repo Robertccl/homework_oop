@@ -1,21 +1,14 @@
 #pragma once
 
 #include "MyElvator.h"
-#include "MyUtil.h"
+#include "PersonSimulation.h"
 
 
-typedef struct personNode
-{
-	int waitFloor;            //客人等待电梯的楼层
-	int distFloor;              //客人要去往的楼层
-	int belongingNeedSpace;      //客人携带的随身物品占用的空间
-	int waitElvatorNum;
-}person;
 
 class ElvatorSimulation
 {
 public:
-	MyUtil myUtil;
+	MyUtil* myUtil = MyUtil::getInstance();
 
 public:
 	ElvatorSimulation();
@@ -37,8 +30,8 @@ private:
 
 	int totalSimulationTime;     //总共的仿真时间
 
-	int customerNum;             //仿真时间内出现的顾客
-
-	person* personHeader;
+	//int customerNum;             //仿真时间内出现的顾客
+	PersonSimulation personSimulation;
+	
 };
 
