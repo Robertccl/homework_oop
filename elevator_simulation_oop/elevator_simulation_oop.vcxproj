@@ -151,15 +151,15 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyElvator.cpp" />
     <ClCompile Include="MyUtil.cpp" />
-    <ClCompile Include="Person.cpp" />
-    <ClCompile Include="PersonSimulation.cpp" />
+    <ClCompile Include="Passenger.cpp" />
+    <ClCompile Include="PassengerSimulation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ElvatorSimulation.h" />
     <ClInclude Include="MyElvator.h" />
     <ClInclude Include="MyUtil.h" />
-    <ClInclude Include="Person.h" />
-    <ClInclude Include="PersonSimulation.h" />
+    <ClInclude Include="Passenger.h" />
+    <ClInclude Include="PassengerSimulation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

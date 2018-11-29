@@ -2,11 +2,11 @@
 #include "MyUtil.h"
 
 
-class Person
+class Passenger
 {
 public:
-	Person();
-	~Person();
+	Passenger();
+	~Passenger();
 
 	void setWitFloor(int waitFloor);
 	int getWitFloor();

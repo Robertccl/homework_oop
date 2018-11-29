@@ -27,10 +27,10 @@
     <ClCompile Include="ElvatorSimulation.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Person.cpp">
+    <ClCompile Include="Passenger.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="PersonSimulation.cpp">
+    <ClCompile Include="PassengerSimulation.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,10 +44,10 @@
     <ClInclude Include="ElvatorSimulation.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Person.h">
+    <ClInclude Include="Passenger.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="PersonSimulation.h">
+    <ClInclude Include="PassengerSimulation.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

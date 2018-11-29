@@ -1,53 +1,53 @@
-#include "Person.h"
+#include "Passenger.h"
 #include "MyUtil.h"
 
 
-Person::Person()
+Passenger::Passenger()
 {
 }
 
 
-Person::~Person()
+Passenger::~Passenger()
 {
 }
 
-void Person::setWitFloor(int waitFloor)
+void Passenger::setWitFloor(int waitFloor)
 {
 	this->waitFloor = waitFloor;
 }
-int Person::getWitFloor()
+int Passenger::getWitFloor()
 {
 	return this->waitFloor;
 }
 
-void Person::setDstFloor(int distFloor)
+void Passenger::setDstFloor(int distFloor)
 {
 	this->distFloor = distFloor;
 }
-int Person::getDstFloor()
+int Passenger::getDstFloor()
 {
 	return this->distFloor;
 }
 
-void Person::setBlongingNeedSpace(int belongingNeedSpace)
+void Passenger::setBlongingNeedSpace(int belongingNeedSpace)
 {
 	this->belongingNeedSpace = belongingNeedSpace;
 }
-int Person::getBlongingNeedSpace()
+int Passenger::getBlongingNeedSpace()
 {
 	return this->belongingNeedSpace;
 }
 
-void Person::setWitElvatorNum(int waitElvatorNum)
+void Passenger::setWitElvatorNum(int waitElvatorNum)
 {
 	this->waitElvatorNum = waitElvatorNum;
 }
-int Person::getWitElvatorNum()
+int Passenger::getWitElvatorNum()
 {
 	return this->waitElvatorNum;
 }
 
-void Person::init()
+void Passenger::init()
 {
 	belongingNeedSpace = 0;
 	waitFloor = 1;
