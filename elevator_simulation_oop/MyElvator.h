@@ -6,7 +6,7 @@
 #include <list>
 
 #include "MyUtil.h"
-#include "Person.h"
+#include "Passenger.h"
 
 using namespace std;
 
