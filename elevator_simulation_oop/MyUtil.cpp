@@ -12,6 +12,15 @@ MyUtil::~MyUtil()
 }
 
 
+MyUtil* MyUtil::getInstance()
+{
+	static MyUtil* myUtil;
+	if (myUtil == NULL)
+		myUtil = new MyUtil();
+	return myUtil;
+}
+
+
 
 int MyUtil::random(int min, int max)
 {
