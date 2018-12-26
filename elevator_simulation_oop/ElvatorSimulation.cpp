@@ -19,37 +19,91 @@ void ElvatorSimulation::setMaxCarryMen(int elvatorNum, int carryCapacity)
 }
 
 
+void ElvatorSimulation::initElevatorFlag()
+{
+	for (int i = 0; i < 10; i++)
+	{
+		elevatorFlag[i] = false;
+	}
+}
+
+
 
 //电梯仿真初始化
 void ElvatorSimulation::simulationInit(int maxcarrier, int initPersonNum, int totalTime)    //对应要求输入的k, n, m
 {
-	
-	//this->customerNum = initPersonNum;
-	this->totalSimulationTime = totalTime;
-
-	passengerSimulation.initPassengerSimulation(initPersonNum);
-
-	int InitFloor = 0;
+	int initFloor = 0;
 	for (int i = 0; i < 10; i++)
 	{
 		//this->maxCarryMen = defaultCarryNum;
 		myElvator[i].elevator.linkageFlag = false;
 		myElvator[i].elevator.elevatorCarryMen = 0;
+		myElvator[i].elevator.runFlag = false;
+		myElvator[i].elevator.runningDirectionFlag = false;
 		myElvator[i].setMaxCarryMen(maxcarrier);
-		InitFloor = myUtil->random(1, 40);
-		if (canArrive(i, InitFloor))
+		initFloor = myUtil->random(1, 40);
+		if (canArrive(i, initFloor))
 		{
-			myElvator[i].elevator.stopFloor = InitFloor;
-			myElvator[i].elevator.distFloor = InitFloor;
-			myElvator[i].elevator.currentFloor = InitFloor;
+			myElvator[i].elevator.stopFloor = initFloor;
+			myElvator[i].elevator.distFloor = initFloor;
+			myElvator[i].elevator.currentFloor = initFloor;
 		}
 	}
+
+	//this->customerNum = initPersonNum;
+	this->totalSimulationTime = totalTime;
+
+	//初始化仿真开始时的乘客
+	passengerSimulation.initPassengerSimulation(initPersonNum);
+	//给初始化好的每一个乘客分配要等待的电梯
+	int k = 0;   //引入k可以使每次分配电梯时从上一次分配结束的位置开始，不会每一次都分配给前面的电梯
+	for (int i = 0; i < initPersonNum; i++)
+	{
+		initElevatorFlag();
+		canTakeFloor(passengerSimulation.passengerPtr[i].getDstFloor(), elevatorFlag);
+		if (k < 10)
+		{
+			for (int j = k; j < 10; j++)
+			{
+				if (elevatorFlag[j])
+					passengerSimulation.passengerPtr[i].setWaitElvatorNum(j);
+				k = j;
+				myElvator[j].addWaitingCustommer(passengerSimulation.passengerPtr[i]);
+				
+			}
+			
+		}
+		else
+		{
+			k = 0;
+			for (int j = k; j < 10; j++)
+			{
+				if (elevatorFlag[j])
+					passengerSimulation.passengerPtr[i].setWaitElvatorNum(j);
+				k = j;
+				myElvator[j].addWaitingCustommer(passengerSimulation.passengerPtr[i]);
+			}
+			
+		}
+			
+	}
+
+	
 
 }
 
 //电梯仿真开始
 void ElvatorSimulation::simulationStart()
 {
+	int timeclock = 0;
+	while (1)
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			
+			
+		}
+	}
 
 }
 

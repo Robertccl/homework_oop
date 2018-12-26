@@ -18,6 +18,11 @@ typedef struct elevatorNode
 	int stopFloor;           //电梯在没任务时停的楼层
 	int distFloor;           //电梯接客的目的楼层，即客人等待电梯的楼层
 	int currentFloor;          //电梯当前所在的楼层
+	bool runningDirectionFlag;     //电梯当前的运行方向，true为向上，false为向下
+	int runningTimeforNextFloor;       //电梯上次关门后已经运行的时间
+	int runTimeforNextFloor;           //电梯上次关门到下次开门需要运行的时间
+	bool runFlag;                      //电梯是否在运行的标志，为真在运行，否则是空闲状态
+	bool menLeavingFlag;                //电梯是否在上下客人的标志
 }elevatorElement;
 
 
@@ -31,6 +36,19 @@ public:
 
 	void setMaxCarryMen(int carryCapacity);
 
+	//判断电梯是否为空
+	bool isEmpty();
+
+	//向待接送的 乘客链表 添加人
+	void addWaitingCustommer(Passenger& p);
+	//到达最近的待接客人的楼层后，接客
+	void addCarryingCustomer();
+
+	//乘客下电梯
+	void leaveElevator();
+
+	//
+	void run();
 
 
 public:

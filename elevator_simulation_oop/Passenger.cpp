@@ -38,13 +38,24 @@ int Passenger::getBlongingNeedSpace()
 	return this->belongingNeedSpace;
 }
 
-void Passenger::setWitElvatorNum(int waitElvatorNum)
+void Passenger::setWaitElvatorNum(int waitElvatorNum)
 {
 	this->waitElvatorNum = waitElvatorNum;
 }
-int Passenger::getWitElvatorNum()
+int Passenger::getWaitElvatorNum()
 {
 	return this->waitElvatorNum;
+}
+
+
+void Passenger::setWaitTimeforNext()
+{
+	waitTimeforNext = myUtil->random(10, 120);
+}
+
+int Passenger::getWaitTimeforNext()
+{
+	return waitTimeforNext;
 }
 
 void Passenger::init()
@@ -53,5 +64,6 @@ void Passenger::init()
 	waitFloor = 1;
 	distFloor = myUtil->random(1, 40);
 	waitElvatorNum = 0;
+	takingtimes = myUtil->random(1, 10) + 1;
 
 }
