@@ -44,9 +44,9 @@ void ElvatorSimulation::simulationInit(int maxcarrier, int initPersonNum, int to
 		initFloor = myUtil->random(1, 40);
 		if (canArrive(i, initFloor))
 		{
-			myElvator[i].elevator.stopFloor = initFloor;
-			myElvator[i].elevator.distFloor = initFloor;
-			myElvator[i].elevator.currentFloor = initFloor;
+			myElvator[i].elevator.stopFloor = initFloor;   
+			myElvator[i].elevator.distFloor =  initFloor;
+			myElvator[i].elevator.currentFloor =  initFloor;
 		}
 	}
 
@@ -69,9 +69,7 @@ void ElvatorSimulation::simulationInit(int maxcarrier, int initPersonNum, int to
 					passengerSimulation.passengerPtr[i].setWaitElvatorNum(j);
 				k = j;
 				myElvator[j].addWaitingCustommer(passengerSimulation.passengerPtr[i]);
-				
 			}
-			
 		}
 		else
 		{
@@ -83,19 +81,15 @@ void ElvatorSimulation::simulationInit(int maxcarrier, int initPersonNum, int to
 				k = j;
 				myElvator[j].addWaitingCustommer(passengerSimulation.passengerPtr[i]);
 			}
-			
-		}
-			
+		}	
 	}
-
-	
-
 }
 
 //电梯仿真开始
 void ElvatorSimulation::simulationStart()
 {
 	int timeclock = 0;
+	
 	while (1)
 	{
 		for (int i = 0; i < 10; i++)

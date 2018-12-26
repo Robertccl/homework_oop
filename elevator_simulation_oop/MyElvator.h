@@ -51,6 +51,17 @@ public:
 	void run();
 
 
+	bool cmp21(Passenger p1, Passenger p2)
+	{
+		return p1.getDstFloor > p2.getDstFloor;
+	};
+
+	bool cmp12(Passenger p1, Passenger p2)
+	{
+		return p1.getDstFloor < p2.getDstFloor;
+	};
+
+
 public:
 	const int defaultCarryNum = 16;
 
