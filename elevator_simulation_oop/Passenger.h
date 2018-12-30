@@ -1,4 +1,6 @@
-#pragma once
+#ifndef   MY_PASSENGER       //如果没有定义这个宏  
+#define   MY_PASSENGER       //定义这个宏  
+
 #include "MyUtil.h"
 
 
@@ -23,7 +25,8 @@ public:
 	void setWaitTimeforNext();
 	int getWaitTimeforNext();
 
-
+	Passenger& operator= (const Passenger& p);
+	bool friend operator==(const Passenger& p1, const Passenger& p2);
 
 public:
 	void init();
@@ -40,4 +43,6 @@ private:
 	int takingtimes;             //客人要乘坐电梯的次数，文档中的要求乘坐L次，第L+1次回到一层，这个变量包含第L+1次
 	int waitTimeforNext;          //完成一次乘梯活动后，休息的时间，即两次乘梯之间的间隔，随机产生
 };
+
+#endif
 

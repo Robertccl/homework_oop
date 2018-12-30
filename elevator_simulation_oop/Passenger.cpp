@@ -1,3 +1,5 @@
+
+
 #include "Passenger.h"
 #include "MyUtil.h"
 
@@ -9,6 +11,30 @@ Passenger::Passenger()
 
 Passenger::~Passenger()
 {
+}
+
+
+Passenger& Passenger::operator= (const Passenger& p)
+{
+	Passenger *tmp = new Passenger();
+	tmp->belongingNeedSpace = p.belongingNeedSpace;
+	tmp->distFloor = p.distFloor;
+	tmp->takingtimes = p.takingtimes;
+	tmp->waitElvatorNum = p.waitElvatorNum;
+	tmp->waitFloor = p.waitFloor;
+	tmp->waitTimeforNext = p.waitTimeforNext;
+	return *tmp;
+}
+
+bool operator==(const Passenger& p1, const Passenger& p2)
+{
+	bool flag = false;
+	if (p1.distFloor == p2.distFloor)
+		if (p1.takingtimes == p2.takingtimes)
+			if (p1.waitElvatorNum == p2.waitElvatorNum)
+				if (p1.waitFloor == p2.waitFloor)
+					flag = true;
+	return false;
 }
 
 void Passenger::setWitFloor(int waitFloor)

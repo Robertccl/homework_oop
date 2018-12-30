@@ -1,4 +1,5 @@
-#pragma once
+#ifndef   MY_UTIL       //如果没有定义这个宏  
+#define   MY_UTIL      //定义这个宏  
 
 #include <iostream>
 #include <fstream>
@@ -25,4 +26,6 @@ private:
 	~MyUtil();
 	
 };
+
+#endif
 

@@ -1,4 +1,6 @@
-#pragma once
+#ifndef   MY_ELVATOR_SIMULATION       //如果没有定义这个宏  
+#define   MY_ELVATOR_SIMULATION       //定义这个宏 
+
 
 #include "MyElvator.h"
 #include "PassengerSimulation.h"
@@ -47,4 +49,4 @@ private:
 	PassengerSimulation passengerSimulation;
 	
 };
-
+#endif

@@ -80,7 +80,7 @@ void MyElvator::addCarryingCustomer()
 		elevator.distFloor = p.getDstFloor();
 		elevator.elevatorCarryMen++;
 		waitingPickUpCustomers.pop_front();
-
+		
 		//电梯上人等10 秒
 		int i = 0;
 		while (i < 10)
@@ -129,12 +129,34 @@ void MyElvator::run()
 	else
 		elevator.currentFloor--;
 	//乘客下电梯
-	leaveElevator();
+	if(elevator.elevatorCarryMen>0)
+		leaveElevator();
 
 	//如果电梯有要去接的人
 	if (!waitingPickUpCustomers.empty())
 	{
 		addCarryingCustomer();
 	}
+	printInfo();
+}
+
+void MyElvator::goon()
+{
+	elevator.currentFloor++;
+	printInfo();
+}
+
+void MyElvator::printInfo()
+{
+	cout << "****************************" << endl;
+	cout << "电梯现在楼层:   " << elevator.currentFloor << endl;;
+	cout << "电梯内乘客数量：  " << elevator.elevatorCarryMen << endl;
+	cout << "电梯运行方向： ";
+	if (elevator.runFlag)
+		cout << "向上" << endl;
+	else
+		cout << "向下" << endl;
+	cout << "电梯还需要接客的数量： " << this->waitingPickUpCustomers.size() << endl;;
+	cout << "****************************" << endl;
 }
 

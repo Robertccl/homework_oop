@@ -1,5 +1,5 @@
-#pragma once
-
+#ifndef   MY_ELVATOR       //如果没有定义这个宏  
+#define   MY_ELVATOR       //定义这个宏  
 
 #include <vector>
 #include <queue>
@@ -7,6 +7,7 @@
 
 #include "MyUtil.h"
 #include "Passenger.h"
+#include "PassengerSimulation.h"
 
 using namespace std;
 
@@ -25,7 +26,15 @@ typedef struct elevatorNode
 	bool menLeavingFlag;                //电梯是否在上下客人的标志
 }elevatorElement;
 
+inline bool cmp21(Passenger& p1, Passenger& p2)
+{
+	return p1.getDstFloor() > p2.getDstFloor();
+};
 
+inline bool cmp12(Passenger& p1, Passenger& p2)
+{
+	return p1.getDstFloor() < p2.getDstFloor();
+};
 
 
 class MyElvator
@@ -47,23 +56,19 @@ public:
 	//乘客下电梯
 	void leaveElevator();
 
-	//
+	//如果这一层电梯可以停，就判断有没有人要上，有没有人要下
 	void run();
 
+	//如果这一层没有不能停，就直接继续下去，不停
+	void goon();
 
-	bool cmp21(Passenger p1, Passenger p2)
-	{
-		return p1.getDstFloor > p2.getDstFloor;
-	};
-
-	bool cmp12(Passenger p1, Passenger p2)
-	{
-		return p1.getDstFloor < p2.getDstFloor;
-	};
+	void printInfo();
 
 
 public:
 	const int defaultCarryNum = 16;
+
+	friend class PassengerSimulation;
 
 	MyUtil* myUtil = MyUtil::getInstance();
 
@@ -85,4 +90,6 @@ public:
 
 	
 };
+
+#endif
 

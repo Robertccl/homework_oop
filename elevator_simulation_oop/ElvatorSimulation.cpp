@@ -89,12 +89,20 @@ void ElvatorSimulation::simulationInit(int maxcarrier, int initPersonNum, int to
 void ElvatorSimulation::simulationStart()
 {
 	int timeclock = 0;
-	
+	int tmpElevator = 0;
+	int tmpFloor = 0;
 	while (1)
 	{
 		for (int i = 0; i < 10; i++)
 		{
-			
+
+			tmpElevator = i;
+			tmpFloor = myElvator[i].elevator.currentFloor;
+			cout << "-------------µçÌÝ±àºÅ: " << i << "----------------" << endl;
+			if (canArrive(tmpElevator, tmpFloor))
+				myElvator[i].run();
+			else
+				myElvator[i].goon();
 			
 		}
 	}

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef   MY_PASSENGER_SIMULATION       //如果没有定义这个宏  
+#define   MY_PASSENGER_SIMULATION       //定义这个宏  
 
 #include "Passenger.h"
 #include <vector>
@@ -22,10 +23,15 @@ public:
 
 
 public:
-	int customerNum;             //仿真时间内出现的顾客
+	int customerNum;             //仿真时间内出现的顾客数量
 
 	queue<Passenger> customerRequest;      //顾客请求乘坐电梯的请求队列
 
 	Passenger* passengerPtr;            //指向人群的指针
+
+	Passenger*  SimulatingPassengerPtr;
+	Passenger*  SimulatedPassengerPtr;
 };
+
+#endif
 
