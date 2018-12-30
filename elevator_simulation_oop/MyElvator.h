@@ -88,8 +88,9 @@ public:
 
 	int maxCarryMen;           //最大载客量
 
-	
+	PassengerSimulation* ps;
 };
 
 #endif
 
+ 

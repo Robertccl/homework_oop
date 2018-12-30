@@ -4,6 +4,7 @@
 
 MyElvator::MyElvator()
 {
+	ps = PassengerSimulation::getInstance();
 }
 
 
@@ -70,17 +71,19 @@ void MyElvator::addCarryingCustomer()
 		}
 		
 	}
+	//如果接到人将人从电梯的等待接人队列删除，加入载客队列
 	if (temp != waitingPickUpCustomers.end())
 	{
 		p = *temp;
-
+		
 		carryCustomers.push_back(p);
 		waitingPickUpCustomers.remove(p);
 		elevator.currentFloor = p.getWitFloor();
 		elevator.distFloor = p.getDstFloor();
 		elevator.elevatorCarryMen++;
 		waitingPickUpCustomers.pop_front();
-		
+
+		//ps->simulatingPassengers.remove(p);
 		//电梯上人等10 秒
 		int i = 0;
 		while (i < 10)
@@ -89,8 +92,12 @@ void MyElvator::addCarryingCustomer()
 }
 
 //乘客下电梯
+/*
+下电梯将人从给电梯的载客队列删除，加入乘客仿真的仿真进行队列
+*/
 void MyElvator::leaveElevator()
 {
+	Passenger temp;
 
 	if (elevator.runningDirectionFlag)
 	{
@@ -103,11 +110,21 @@ void MyElvator::leaveElevator()
 		carryCustomers.sort(cmp21);
 	}
 	//检查当前楼层是否有要下的人
-	if (carryCustomers.front().getDstFloor() == elevator.currentFloor)
+	temp = carryCustomers.front();
+	if (temp.getDstFloor() == elevator.currentFloor)
 	{
+		temp.setTakingtimes();
+		temp.setWitFloor(elevator.currentFloor);
 		int i = 0;
 		while (i < 5)
 			i++;
+		if(temp.getTakingtimes()<temp.tokentimes)
+			ps->simulatingPassengers.push_back(temp);
+		else
+		{
+			ps->simulatedPassengers.push_back(temp);
+		}
+		
 	}
 }
 

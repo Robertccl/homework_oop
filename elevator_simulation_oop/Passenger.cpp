@@ -84,6 +84,16 @@ int Passenger::getWaitTimeforNext()
 	return waitTimeforNext;
 }
 
+
+void Passenger::setTakingtimes()
+{
+	takingtimes++;
+}
+int Passenger::getTakingtimes()
+{
+	return takingtimes;
+}
+
 void Passenger::init()
 {
 	belongingNeedSpace = 0;
@@ -92,4 +102,16 @@ void Passenger::init()
 	waitElvatorNum = 0;
 	takingtimes = myUtil->random(1, 10) + 1;
 
+}
+
+//下一次乘坐初始化，不改当前楼层和乘坐总次数
+void Passenger::nextTakeInit()
+{
+	belongingNeedSpace = 0;
+	distFloor = myUtil->random(1, 40);
+	waitElvatorNum = 0;
+	//随机停留10-120秒
+	waitTimeforNext = myUtil->random(10, 120);
+	Sleep(waitTimeforNext);
+	
 }

@@ -2,25 +2,27 @@
 #define   MY_PASSENGER_SIMULATION       //定义这个宏  
 
 #include "Passenger.h"
+#include "MyUtil.h"
 #include <vector>
 #include <queue>
+#include <list>
 
 using namespace std;
 
 class PassengerSimulation
 {
+
 public:
-	PassengerSimulation();
-	~PassengerSimulation();
+	static PassengerSimulation* getInstance();
+
 
 
 public:
 	void initPassengerSimulation(int initPersonNum);
 
 
-	void dealCustomerRequest(Passenger p);     //处理顾客的请求,分发至每个电梯的接客队列
+	Passenger initPassengerforNext();     //处理顾客的请求,分发至每个电梯的接客队列
 	
-
 
 public:
 	int customerNum;             //仿真时间内出现的顾客数量
@@ -29,8 +31,15 @@ public:
 
 	Passenger* passengerPtr;            //指向人群的指针
 
-	Passenger*  SimulatingPassengerPtr;
-	Passenger*  SimulatedPassengerPtr;
+	list<Passenger>  simulatingPassengers;
+	list<Passenger>  simulatedPassengers;
+
+
+	MyUtil* myUtil;
+
+private:
+	PassengerSimulation();
+	~PassengerSimulation();
 };
 
 #endif

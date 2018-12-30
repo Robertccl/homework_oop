@@ -4,12 +4,32 @@
 
 PassengerSimulation::PassengerSimulation()
 {
-	
+	myUtil = MyUtil::getInstance();
 }
 
 
 PassengerSimulation::~PassengerSimulation()
 {
+}
+
+PassengerSimulation* PassengerSimulation::getInstance()
+{
+	static PassengerSimulation* ps;
+	if (ps == NULL)
+		ps = new PassengerSimulation();
+	return ps;
+}
+
+Passenger PassengerSimulation::initPassengerforNext()
+{
+	Passenger temp;
+	if (!simulatingPassengers.empty())
+	{
+		temp = simulatingPassengers.front();
+		temp.nextTakeInit();
+	}
+	simulatingPassengers.pop_front();
+	return temp;
 }
 
 
