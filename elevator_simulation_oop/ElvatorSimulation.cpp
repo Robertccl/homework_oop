@@ -1,5 +1,5 @@
 #include "ElvatorSimulation.h"
-
+#include <process.h>
 
 
 ElvatorSimulation::ElvatorSimulation()
@@ -98,15 +98,20 @@ void ElvatorSimulation::simulationStart()
 				myElvator[i].goon();
 
 			temp =  ps->initPassengerforNext();
-			myUtil->canTakeFloor(temp.getWitFloor(), temp.getDstFloor());
-			for (int j = 0; j < 10; j++)
+			if (!temp.isNone())
 			{
-				if (myUtil->elevatorFlag[j])
-					temp.setWaitElvatorNum(j);
-				myElvator[j].addWaitingCustommer(temp);
+				myUtil->canTakeFloor(temp.getWitFloor(), temp.getDstFloor());
+				for (int j = 0; j < 10; j++)
+				{
+					if (myUtil->elevatorFlag[j])
+						temp.setWaitElvatorNum(j);
+					myElvator[j].addWaitingCustommer(temp);
+				}
 			}
+				
 			Sleep(1000);
 		}
+		system("cls");
 		Sleep(3000);
 	}
 

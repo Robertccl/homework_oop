@@ -27,8 +27,8 @@ Passenger PassengerSimulation::initPassengerforNext()
 	{
 		temp = simulatingPassengers.front();
 		temp.nextTakeInit();
+		simulatingPassengers.pop_front();
 	}
-	simulatingPassengers.pop_front();
 	return temp;
 }
 

@@ -43,20 +43,15 @@ int MyUtil::random(int min, int max)
 	return u(rng);
 }
 
-void MyUtil::initElevatorFlag()
-{
-	for (int i = 0; i < 10; i++)
-	{
-		elevatorFlag[i] = false;
-	}
-}
+
 
 //判断去某个楼层可以乘坐的电梯编号   elevatorFlag为10个bool类型，初始值为false
 void MyUtil::canTakeFloor(int nowfloor, int distfloor)
 {
-	initElevatorFlag();
+	
 	for (int i = 0; i < 10; i++)
 		elevatorFlag[i] = false;
+
 	if (distfloor > 0 && distfloor <= 40)
 	{
 		elevatorFlag[0] = true;
@@ -90,6 +85,11 @@ void MyUtil::canTakeFloor(int nowfloor, int distfloor)
 			elevatorFlag[8] = true;
 			elevatorFlag[9] = true;
 		}
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		if (!canArrive(i, nowfloor))
+			elevatorFlag[i] = false;
 	}
 
 }

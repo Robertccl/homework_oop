@@ -115,3 +115,11 @@ void Passenger::nextTakeInit()
 	Sleep(waitTimeforNext);
 	
 }
+
+bool Passenger::isNone()
+{
+	
+	if (waitFloor == 0 || distFloor == 0 || takingtimes == 0)
+		return true;
+	return false;
+}

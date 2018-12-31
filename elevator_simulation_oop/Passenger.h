@@ -37,6 +37,8 @@ public:
 	//下一次乘坐初始化，不改当前楼层和乘坐总次数
 	void nextTakeInit();
 
+	bool isNone();
+
 public:
 	MyUtil* myUtil = MyUtil::getInstance();
 
