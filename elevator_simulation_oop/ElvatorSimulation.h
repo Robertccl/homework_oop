@@ -25,17 +25,10 @@ public:
 
 	void setMaxCarryMen(int elvatorNum, int carryCapacity);
 
-	
-
-	
-
-
 private:
 	//题目中的十部电梯，其实可以手动输入电梯的数量，然后在专门建立一个类写电梯运行规则，
 	//这样设计更便于扩展，但是题目没有要求，就偷懒吧
 	MyElvator myElvator[10];
-
-	
 
 	int totalSimulationTime;     //总共的仿真时间
 

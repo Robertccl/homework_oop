@@ -68,7 +68,7 @@ public:
 public:
 	const int defaultCarryNum = 16;
 
-	friend class PassengerSimulation;
+	//friend class PassengerSimulation;
 
 	MyUtil* myUtil = MyUtil::getInstance();
 

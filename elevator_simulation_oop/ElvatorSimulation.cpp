@@ -10,6 +10,7 @@ ElvatorSimulation::ElvatorSimulation()
 
 ElvatorSimulation::~ElvatorSimulation()
 {
+	myUtil = NULL;
 }
 
 //设定每个电梯的乘坐人数

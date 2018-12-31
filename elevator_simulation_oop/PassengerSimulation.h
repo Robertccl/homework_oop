@@ -27,13 +27,13 @@ public:
 public:
 	int customerNum;             //仿真时间内出现的顾客数量
 
-	queue<Passenger> customerRequest;      //顾客请求乘坐电梯的请求队列
+	//queue<Passenger> customerRequest;      //顾客请求乘坐电梯的请求队列
 
 	Passenger* passengerPtr;            //指向人群的指针
 
-	list<Passenger>  simulatingPassengers;
-	list<Passenger>  simulatedPassengers;
-
+	list<Passenger>  simulatingPassengers;    //还在仿真的乘客列表
+	
+	list<Passenger>  simulatedPassengers;  //仿真结束的乘客列表
 
 	MyUtil* myUtil;
 

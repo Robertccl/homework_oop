@@ -10,6 +10,8 @@ PassengerSimulation::PassengerSimulation()
 
 PassengerSimulation::~PassengerSimulation()
 {
+	delete [] passengerPtr;
+	myUtil = NULL;
 }
 
 PassengerSimulation* PassengerSimulation::getInstance()

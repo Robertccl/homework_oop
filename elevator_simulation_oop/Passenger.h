@@ -44,7 +44,7 @@ public:
 
 
 public:
-		int tokentimes;             //客人要乘坐电梯的次数，文档中的要求乘坐L次，第L+1次回到一层，这个变量包含第L+1次
+	int tokentimes;             //客人要乘坐电梯的次数，文档中的要求乘坐L次，第L+1次回到一层，这个变量包含第L+1次
 
 private:
 	int waitFloor;            //客人等待电梯的楼层
