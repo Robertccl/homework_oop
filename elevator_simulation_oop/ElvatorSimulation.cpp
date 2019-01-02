@@ -110,10 +110,10 @@ void ElvatorSimulation::simulationStart()
 				}
 			}
 				
-			Sleep(1000);
+			Sleep(500);
 		}
 		system("cls");
-		Sleep(3000);
+		Sleep(1000);
 	}
 
 }
