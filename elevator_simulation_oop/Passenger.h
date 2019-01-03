@@ -30,8 +30,8 @@ public:
 
 
 	Passenger& operator= (const Passenger& p);
-	bool friend operator==(const Passenger& p1, const Passenger& p2);
-
+	bool  operator==(const Passenger& p);
+	bool  operator!=(const Passenger& p);
 public:
 	void init();
 	//下一次乘坐初始化，不改当前楼层和乘坐总次数

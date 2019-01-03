@@ -31,9 +31,9 @@ void MyElvator::addWaitingCustommer(Passenger& p)
 
 
 //判断当前楼层是否有要上的客人
-void MyElvator::addCarryingCustomer()
+bool MyElvator::addCarryingCustomer()
 {
-	
+	bool flag = false;
 	//如果空闲
 	/*if (!elevator.runFlag)
 	{
@@ -88,15 +88,19 @@ void MyElvator::addCarryingCustomer()
 		int i = 0;
 		while (i < 10)
 			i++;
+		flag = true;
+
 	}
+	return flag;
 }
 
 //乘客下电梯
 /*
 下电梯将人从给电梯的载客队列删除，加入乘客仿真的仿真进行队列
 */
-void MyElvator::leaveElevator()
+bool MyElvator::leaveElevator()
 {
+	bool flag = false;
 	Passenger temp;
 
 	if (elevator.runningDirectionFlag)
@@ -124,8 +128,9 @@ void MyElvator::leaveElevator()
 		{
 			ps->simulatedPassengers.push_back(temp);
 		}
-		
+		flag = true;
 	}
+	return flag;
 }
 
 
@@ -147,12 +152,12 @@ void MyElvator::run()
 		elevator.currentFloor--;
 	//乘客下电梯
 	if(elevator.elevatorCarryMen>0)
-		leaveElevator();
+		while(leaveElevator());
 
 	//如果电梯有要去接的人
 	if (!waitingPickUpCustomers.empty())
 	{
-		addCarryingCustomer();
+		while(addCarryingCustomer());
 	}
 	printInfo();
 }
@@ -169,7 +174,7 @@ void MyElvator::printInfo()
 	cout << "电梯现在楼层:   " << elevator.currentFloor << endl;;
 	cout << "电梯内乘客数量：  " << elevator.elevatorCarryMen << endl;
 	cout << "电梯运行方向： ";
-	if (elevator.runFlag)
+	if (elevator.runningDirectionFlag)
 		cout << "向上" << endl;
 	else
 		cout << "向下" << endl;

@@ -52,30 +52,29 @@ void ElvatorSimulation::simulationInit(int maxcarrier, int initPersonNum, int to
 	ps->initPassengerSimulation(initPersonNum);
 	//给初始化好的每一个乘客分配要等待的电梯
 	int k = 0;   //引入k可以使每次分配电梯时从上一次分配结束的位置开始，不会每一次都分配给前面的电梯
-	for (int i = 0; i < initPersonNum; i++)
+	Passenger temp;
+	while(!ps->simulatingPassengers.empty())
 	{
-		myUtil->canTakeFloor(1, ps->passengerPtr[i].getDstFloor());
-		if (k < 10)
-		{
-			for (int j = k; j < 10; j++)
-			{
-				if (myUtil->elevatorFlag[j])
-					ps->passengerPtr[i].setWaitElvatorNum(j);
-				k = j;
-				myElvator[j].addWaitingCustommer(ps->passengerPtr[i]);
-			}
-		}
-		else
+		temp = ps->simulatingPassengers.front();
+		myUtil->canTakeFloor(1, temp.getDstFloor());
+		if (k >= 10)
 		{
 			k = 0;
-			for (int j = k; j < 10; j++)
+		}
+		for (int j = k; j < 10; j++)
+		{
+			if (myUtil->elevatorFlag[j])
 			{
-				if (myUtil->elevatorFlag[j])
-					ps->passengerPtr[i].setWaitElvatorNum(j);
-				k = j;
-				myElvator[j].addWaitingCustommer(ps->passengerPtr[i]);
+				temp.setWaitElvatorNum(j);
+				k = j + 1;
+				if (myElvator[j].elevator.currentFloor < temp.getWitFloor())
+					myElvator[j].elevator.runningDirectionFlag = true;
+				myElvator[j].addWaitingCustommer(temp);
+				ps->simulatingPassengers.pop_front();
+				break;
 			}
-		}	
+		}
+		k++;
 	}
 }
 
@@ -88,6 +87,8 @@ void ElvatorSimulation::simulationStart()
 	int tmpFloor = 0;
 	while (1)
 	{
+		if (ps->simulatedPassengers.size() == ps->customerNum)
+			break;
 		for (int i = 0; i < 10; i++)
 		{
 			tmpElevator = i;
@@ -115,6 +116,6 @@ void ElvatorSimulation::simulationStart()
 		system("cls");
 		Sleep(1000);
 	}
-
+	cout << "电梯仿真结束！！！" << endl;
 }
 

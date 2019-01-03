@@ -16,23 +16,38 @@ Passenger::~Passenger()
 
 Passenger& Passenger::operator= (const Passenger& p)
 {
-	Passenger *tmp = new Passenger();
-	tmp->belongingNeedSpace = p.belongingNeedSpace;
-	tmp->distFloor = p.distFloor;
-	tmp->takingtimes = p.takingtimes;
-	tmp->waitElvatorNum = p.waitElvatorNum;
-	tmp->waitFloor = p.waitFloor;
-	tmp->waitTimeforNext = p.waitTimeforNext;
-	return *tmp;
+	//Passenger *tmp = new Passenger();
+	if (!(*this == p))
+	{
+		this->belongingNeedSpace = p.belongingNeedSpace;
+		this->distFloor = p.distFloor;
+		this->takingtimes = p.takingtimes;
+		this->waitElvatorNum = p.waitElvatorNum;
+		this->waitFloor = p.waitFloor;
+		this->waitTimeforNext = p.waitTimeforNext;
+	}
+	
+	return *this;
 }
 
-bool operator==(const Passenger& p1, const Passenger& p2)
+bool Passenger::operator==(const Passenger& p)
 {
 	bool flag = false;
-	if (p1.distFloor == p2.distFloor)
-		if (p1.takingtimes == p2.takingtimes)
-			if (p1.waitElvatorNum == p2.waitElvatorNum)
-				if (p1.waitFloor == p2.waitFloor)
+	if (this->distFloor == p.distFloor)
+		if (this->takingtimes == p.takingtimes)
+			if (this->waitElvatorNum == p.waitElvatorNum)
+				if (this->waitFloor == p.waitFloor)
+					flag = true;
+	return false;
+}
+
+bool Passenger::operator!=(const Passenger& p)
+{
+	bool flag = false;
+	if (this->distFloor != p.distFloor)
+		if (this->takingtimes != p.takingtimes)
+			if (this->waitElvatorNum != p.waitElvatorNum)
+				if (this->waitFloor != p.waitFloor)
 					flag = true;
 	return false;
 }

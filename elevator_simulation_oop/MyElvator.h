@@ -51,10 +51,10 @@ public:
 	//向待接送的 乘客链表 添加人
 	void addWaitingCustommer(Passenger& p);
 	//到达最近的待接客人的楼层后，接客
-	void addCarryingCustomer();
+	bool addCarryingCustomer();
 
 	//乘客下电梯
-	void leaveElevator();
+	bool leaveElevator();
 
 	//如果这一层电梯可以停，就判断有没有人要上，有没有人要下
 	void run();

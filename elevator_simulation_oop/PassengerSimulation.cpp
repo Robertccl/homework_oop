@@ -41,6 +41,7 @@ void PassengerSimulation::initPassengerSimulation(int initPersonNum)
 	passengerPtr = new Passenger[customerNum];
 	for (int i = 0; i < customerNum; i++)
 	{
-		passengerPtr->init();
+		passengerPtr[i].init();
+		simulatingPassengers.push_back(passengerPtr[i]);
 	}
 }
