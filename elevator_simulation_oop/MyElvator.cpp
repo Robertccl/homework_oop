@@ -122,6 +122,8 @@ bool MyElvator::leaveElevator()
 		int i = 0;
 		while (i < 5)
 			i++;
+
+		//检查乘客是否完成仿真任务，完成就回收
 		if(temp.getTakingtimes()<temp.tokentimes)
 			ps->simulatingPassengers.push_back(temp);
 		else
@@ -136,20 +138,23 @@ bool MyElvator::leaveElevator()
 
 void MyElvator::run()
 {
-	if (40 == elevator.currentFloor)
+	if (elevator.runFlag)
 	{
-		elevator.runningDirectionFlag = false;
+		if (40 == elevator.currentFloor)
+		{
+			elevator.runningDirectionFlag = false;
+		}
+		if (1 == elevator.currentFloor)
+		{
+			elevator.runningDirectionFlag = true;
+		}
 	}
-	if (1 == elevator.currentFloor)
-	{
-		elevator.runningDirectionFlag = true;
-	}
-
 	if (elevator.runningDirectionFlag)
 		//电梯上一层楼
 		elevator.currentFloor++;
 	else
 		elevator.currentFloor--;
+
 	//乘客下电梯
 	if(elevator.elevatorCarryMen>0)
 		while(leaveElevator());
